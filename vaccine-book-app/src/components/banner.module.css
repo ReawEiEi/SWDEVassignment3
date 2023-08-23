@@ -1,0 +1,27 @@
+div.banner {
+    display: block;
+    padding: 5px;
+    margin: 0;
+    width: 100vw;
+    height: 60vh;
+    position: relative;
+}
+
+div.bannerText {
+    position: relative;
+    top: 75px;
+    z-index: 20;
+    text-align: right;
+    color: #442400;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-right: 10px;
+}
+
+.headText {
+    margin-bottom: 300px;
+    font-size: 2.5em;
+}
+
+.describeText {
+    font-size: 1.2em;
+}
