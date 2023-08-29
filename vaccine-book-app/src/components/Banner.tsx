@@ -11,7 +11,7 @@ export default function Banner() {
                 objectFit='cover' />
             <div className={styles.bannerText}>
                 <h2 className={styles.headText}>Have you received vaccination for COVID-19?</h2>
-                <h1 className={styles.describeText}>Protect Your Health, Save Your Life @My Hospital</h1>
+                <h1 className={styles.describeText}>Protect Your Health, Save Your Life</h1>
             </div>
         </div>
 

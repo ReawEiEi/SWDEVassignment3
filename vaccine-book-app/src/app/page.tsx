@@ -5,9 +5,14 @@ import InformatinCard from '@/components/InformationCard'
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: "#252525" }}>
+    <main className='bg-white'>
       <Banner />
-      <InformatinCard />
+      <div className='m-2.5 mt-6 flex flex-row flex-wrap justify-around content-around'>
+        <InformatinCard hospitalName='Chulalongkorn Hospital' imgHospital='/img/chula.jpg' />
+        <InformatinCard hospitalName='Rajavithi Hospital' imgHospital='/img/rajavithi.jpg' />
+        <InformatinCard hospitalName='Thammasat University Hospital' imgHospital='/img/thammasat.jpg' />
+      </div>
     </main>
   )
 }
+

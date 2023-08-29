@@ -1,23 +1,17 @@
 import styles from './card.module.css'
 import Image from 'next/image'
 
-export default function ProductCard() {
+export default function ProductCard({ hospitalName, imgHospital }: { hospitalName: string, imgHospital: string }) {
     return (
-        <div className={styles.card}>
-
-            <div className={styles.cardimg}>
-                <Image src={'/img/vaccine.avif'}
-                    alt={'Information'}
+        <div className='w-3/12 h-[300px] rounded-lg shadow-lg bg-slate-400 drop-shadow-lg'>
+            <div className='w-full h-[70%] relative rounded-t-lg '>
+                <Image src={imgHospital}
+                    alt={'Hospital Picture'}
                     fill={true}
-                    objectFit='cover' />
+                    className='object-cover rounded-t-lg' />
             </div>
-            <div className={styles.cardText}>
-                <p>The COVID-19 vaccination has been confirmed to provide effective immunity against COVID-19. This must be done in conjunction with wearing a mask, keeping a distance, and washing your hands often. and avoid crowded areas Therefore, before vaccinating COVID-19, you should know and understand the information correctly.
-                </p>
-                <br />
-                <p>
-                    Vaccine against COVID-19 It will help stimulate the body to build immunity against this virus. Helps prevent infection if infected in the future But it takes some time after vaccination for the body to build up immunity.
-                </p>
+            <div className='w-full h-[30%] p-[10px] text-black font-serif'>
+                {hospitalName}
             </div>
         </div>
     );
