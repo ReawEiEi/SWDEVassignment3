@@ -1,8 +1,10 @@
 'use client'
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import InformatinCard from "./InformationCard";
 
 export default function CardPanel() {
+    const [rating, setRating] = useState(null);
+
     const ratingReducer = (ratingList: Map<string, number | null>, action: { rating: number | null; hname: string }) => {
         const newRatingList = new Map(ratingList);
 
@@ -23,7 +25,6 @@ export default function CardPanel() {
                 return ratingList;
         }
     };
-
     const [ratingList, dispatchRating] = useReducer(ratingReducer, new Map<string, number | null>());
 
     return (
@@ -32,29 +33,26 @@ export default function CardPanel() {
                 <InformatinCard
                     hospitalName="Chulalongkorn Hospital"
                     imgHospital="/img/chula.jpg"
-                    onRating={(rate: number | null, name: string) =>
-                        dispatchRating({ rating: rate, hname: name })
-                    }
-                />
+                    onRating={(rate: number | null, name: string) => dispatchRating({ rating: rate, hname: name })}
+                    ratingMap={ratingList} />
                 <InformatinCard
                     hospitalName="Rajavithi Hospital"
                     imgHospital="/img/rajavithi.jpg"
-                    onRating={(rate: number | null, name: string) =>
-                        dispatchRating({ rating: rate, hname: name })
-                    }
-                />
+                    onRating={(rate: number | null, name: string) => dispatchRating({ rating: rate, hname: name })}
+                    ratingMap={ratingList} />
                 <InformatinCard
                     hospitalName="Thammasat University Hospital"
                     imgHospital="/img/thammasat.jpg"
-                    onRating={(rate: number | null, name: string) =>
-                        dispatchRating({ rating: rate, hname: name })
-                    }
-                />
+                    onRating={(rate: number | null, name: string) => dispatchRating({ rating: rate, hname: name })}
+                    ratingMap={ratingList} />
             </div>
             <div className="w-full text-xl font-medium text-black ml-20">Rating List</div>
             {Array.from(ratingList).map(([name, rate]) => (
-                <div key={name} className="text-black ml-20">
-                    {name} : Rating is {rate}
+                <div key={name} className="text-black ml-20"
+                    onClick={() =>
+                        dispatchRating({ rating: null, hname: name })
+                    }>
+                    {name} : Rating is {rate} Stars.
                 </div>
             ))}
         </div>

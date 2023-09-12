@@ -3,10 +3,23 @@ import styles from './card.module.css'
 import Image from 'next/image'
 import InteractiveCard from './InteractiveCard';
 import { Rating, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function InformatinCard({ hospitalName, imgHospital, onRating }: { hospitalName: string, imgHospital: string, onRating: Function }) {
-    const [value, setValue] = useState<number | null>(2);
+export default function InformatinCard({ hospitalName, imgHospital, onRating, ratingMap }: { hospitalName: string, imgHospital: string, onRating: Function, ratingMap: Map<string, number | null>; }) {
+    const [value, setValue] = useState<number | null>(null);
+
+    const hospitalRating = ratingMap.get(hospitalName);
+
+    useEffect(() => {
+        const hospitalRating = ratingMap.get(hospitalName);
+        setValue(hospitalRating || null);
+    }, [ratingMap, hospitalName]);
+
+    const handleRatingChange = (newValue: number | null) => {
+        setValue(newValue || null);
+        onRating(newValue, hospitalName);
+    };
+
     return (
         <InteractiveCard>
             <div className='w-full h-[65%] relative rounded-t-lg '>
@@ -25,7 +38,7 @@ export default function InformatinCard({ hospitalName, imgHospital, onRating }: 
                     value={value}
                     onChange={(event, newValue) => {
                         setValue(newValue);
-                        onRating(newValue, hospitalName);
+                        handleRatingChange(newValue);
                     }}
                 />
             </div>
