@@ -22,13 +22,15 @@ export default function InformatinCard({ hospitalName, imgHospital, onRating, ra
             </div>
             <div className='h-[10%] p-[10px] my-1'>
                 <Typography component="legend" className='text-black text-sm font-serif'>Rating</Typography>
-                <Rating
-                    name="simple-controlled"
-                    value={hospitalRating || null}
-                    onChange={(event, hospitalRating) => {
-                        onRating(hospitalRating, hospitalName);
-                    }}
-                />
+                <div onClick={(event) => event.stopPropagation()}>
+                    <Rating
+                        name="simple-controlled"
+                        value={hospitalRating || null}
+                        onChange={(event, hospitalRating) => {
+                            onRating(hospitalRating, hospitalName);
+                        }}
+                    />
+                </div>
             </div>
         </InteractiveCard>
     );
