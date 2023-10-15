@@ -5,9 +5,9 @@ import InteractiveCard from './InteractiveCard';
 import { Rating, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 
-export default function InformatinCard({ hospitalName, imgHospital, onRating, ratingMap }: { hospitalName: string, imgHospital: string, onRating: Function, ratingMap: Map<string, number | null>; }) {
+export default function InformatinCard({ hospitalName, imgHospital, onRating, ratingMap }: { hospitalName: string, imgHospital: string, onRating?: Function, ratingMap?: Map<string, number | null>; }) {
 
-    const hospitalRating = ratingMap.get(hospitalName);
+    const hospitalRating = (ratingMap ? ratingMap : new Map()).get(hospitalName);
 
     return (
         <InteractiveCard>
@@ -20,18 +20,20 @@ export default function InformatinCard({ hospitalName, imgHospital, onRating, ra
             <div className='w-full h-[10%] p-[10px] text-black font-serif'>
                 {hospitalName}
             </div>
-            <div className='h-[10%] p-[10px] my-1'>
-                <Typography component="legend" className='text-black text-sm font-serif'>Rating</Typography>
-                <div onClick={(event) => event.stopPropagation()}>
-                    <Rating
-                        name="simple-controlled"
-                        value={hospitalRating || null}
-                        onChange={(event, hospitalRating) => {
-                            onRating(hospitalRating, hospitalName);
-                        }}
-                    />
-                </div>
-            </div>
+            {
+                onRating ? <div className='h-[10%] p-[10px] my-1'>
+                    <Typography component="legend" className='text-black text-sm font-serif'>Rating</Typography>
+                    <div onClick={(event) => event.stopPropagation()}>
+                        <Rating
+                            name="simple-controlled"
+                            value={hospitalRating || null}
+                            onChange={(event, hospitalRating) => {
+                                onRating(hospitalRating, hospitalName);
+                            }}
+                        />
+                    </div>
+                </div> : ''
+            }
         </InteractiveCard>
     );
 }
