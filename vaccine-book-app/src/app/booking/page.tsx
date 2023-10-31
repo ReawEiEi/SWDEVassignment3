@@ -11,6 +11,7 @@ export default async function Booking() {
     const profile = await getUserProfile(session.user.token)
     var createdAt = new Date(profile.data.createdAt)
 
+    
 
     return (
         <main className="bg-white w-[100%] flex flex-col items-center space-y-6">
@@ -31,9 +32,7 @@ export default async function Booking() {
                 Booking Page
             </div>
             <BookingVaccine />
-            <button className="block rounded-md bg-sky-500 hover:bg-sky-900 px-3 py-2 shadow-sm text-white">
-                Check Vaccine Availability
-            </button>
+
         </main>
     );
 }

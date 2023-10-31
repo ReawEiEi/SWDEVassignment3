@@ -16,11 +16,13 @@ export default async function TopMenu() {
                     <Link href='api/auth/signout'>
                         <div className="flex items-center absolute left-0 h-full font-serif text-base text-stone-900 mx-8 text-gray-600">
                             Sign Out
+                            <TopMenuItem title={"My Booking"} pageRef={"/mybooking"}/>
                         </div>
                     </Link> :
                     <Link href='api/auth/signin'>
                         <div className="flex items-center absolute left-0 h-full font-serif text-base text-stone-900 mx-8 text-gray-600">
                             Sign In
+                            <TopMenuItem title={"My Booking"} pageRef={"/mybooking"}/>
                         </div>
                     </Link>
             }
