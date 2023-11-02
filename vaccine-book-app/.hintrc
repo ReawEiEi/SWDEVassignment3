@@ -12,6 +12,12 @@
       }
     ],
     "no-inline-styles": "off",
-    "typescript-config/is-valid": "off"
+    "typescript-config/is-valid": "off",
+    "axe/parsing": [
+      "default",
+      {
+        "duplicate-id-aria": "off"
+      }
+    ]
   }
 }
